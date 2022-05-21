@@ -1,0 +1,58 @@
+http:
+  port: 5000
+admin:
+  port: 9876
+  host: apigateway-pfa.herokuapp.com
+apiEndpoints:
+  auth-api:
+    host: apigateway-pfa.herokuapp.com
+    paths: '/api/v1/*'
+  scolarite-api:
+    host: apigateway-pfa.herokuapp.com
+    paths: '/api/v2/*'  
+  notes-api:
+    host: apigateway-pfa.herokuapp.com
+    paths: '/api/v3/*'    
+serviceEndpoints:
+  auth-service:
+    url: 'https://immense-caverns-54916.herokuapp.com'
+  scolarite-service:
+    url : 'https://powerful-garden-51231.herokuapp.com' 
+  notes-service:
+    url : 'https://obscure-refuge-89278.herokuapp.com'  
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines:
+  default:
+    apiEndpoints:
+      - auth-api
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: auth-service 
+              changeOrigin: true
+  pipeline1:
+    apiEndpoints:
+      - scolarite-api
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: scolarite-service
+              changeOrigin: true
+  pipeline2:
+      apiEndpoints:
+        - notes-api
+      policies:
+        - proxy:
+            - action:
+                serviceEndpoint: notes-service
+                changeOrigin: true              

@@ -1,0 +1,32 @@
+http:
+  port: 3001
+admin:
+  port: 9876
+  host: localhost
+apiEndpoints:
+  auth-service:
+    host: localhost
+    paths: '/api/*'
+serviceEndpoints:
+  httpbin:
+    url: 'http://localhost:8000'
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines:
+  default:
+    apiEndpoints:
+      - auth-service
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: httpbin 
+              changeOrigin: true
