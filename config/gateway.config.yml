@@ -17,7 +17,7 @@ serviceEndpoints:
   auth-service:
     url: 'https://immense-caverns-54916.herokuapp.com'
   scolarite-service:
-    url : 'https://powerful-garden-51231.herokuapp.com' 
+    url : 'https://peaceful-gorge-36360.herokuapp.com' 
   notes-service:
     url : 'https://obscure-refuge-89278.herokuapp.com'  
 policies:
