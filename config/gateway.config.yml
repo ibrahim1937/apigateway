@@ -1,17 +1,17 @@
 http:
-  port: 5000
+  port: ${PORT:-8080}
 admin:
-  port: 9876
-  host: apigateway-pfa.herokuapp.com
+  port: ${PORT:-9876}
+  host: ${HOST:-localhost} 
 apiEndpoints:
   auth-api:
-    host: apigateway-pfa.herokuapp.com
+    host: ${HOST:-localhost} 
     paths: '/api/v1/*'
   scolarite-api:
-    host: apigateway-pfa.herokuapp.com
+    host: ${HOST:-localhost} 
     paths: '/api/v2/*'  
   notes-api:
-    host: apigateway-pfa.herokuapp.com
+    host: ${HOST:-localhost} 
     paths: '/api/v3/*'    
 serviceEndpoints:
   auth-service:
