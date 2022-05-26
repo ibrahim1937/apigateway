@@ -2,16 +2,16 @@ http:
   port: ${PORT:-8080}
 admin:
   port: ${PORT:-9876}
-  host: ${HOST:-localhost} 
+  host: localhost
 apiEndpoints:
   auth-api:
-    host: ${HOST:-localhost} 
+    host: localhost
     paths: '/api/v1/*'
   scolarite-api:
-    host: ${HOST:-localhost} 
+    host: localhost
     paths: '/api/v2/*'  
   notes-api:
-    host: ${HOST:-localhost} 
+    host: localhost
     paths: '/api/v3/*'    
 serviceEndpoints:
   auth-service:
